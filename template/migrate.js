@@ -5,12 +5,9 @@ var Knex = require('knex');
  */
 exports.up = function(knex, Promise) {
   return knex.schema
-    .createTable('t_user', function (table) {
+    .createTable('t_<%= name %>', function (table) {
       table.increments('id').primary();
-      table.string('username');
-      table.string('password');
-      table.string('fullname');
-			table.string('role');
+      table.string('name');
     })
 };
 
@@ -19,5 +16,5 @@ exports.up = function(knex, Promise) {
  */
 exports.down = function(knex, Promise) {
 	return knex.schema
-    .dropTableIfExists('t_user')
+    .dropTableIfExists('t_<%= name %>')
 };

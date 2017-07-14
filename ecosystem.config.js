@@ -7,10 +7,10 @@ module.exports = {
 
     // First application
     {
-      name      : 'eppt-encrypt',
+      name      : 'kola',
       script    : './index.js',
 			instances : 0,
-			exec_mode : "cluster",
+			exec_mode : 'cluster',
       env: {
         COMMON_VARIABLE: 'true',
 				NODE_ENV: 'production'

@@ -16,6 +16,8 @@ export default class RouterConfig {
 
 		// config router
 		new (require('../rest/user.res').default)().init(router);
+		// end config router //please don't remove this line
+
 		app.use(router.routes());
 		app.use(router.allowedMethods());
 	}

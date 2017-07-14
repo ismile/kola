@@ -16,14 +16,21 @@ Another Koa boilerplate
 `yarn install` or `npm install`
 
 ## Development
-`
-npm start
-npm run client
-`
+`npm start`
+`npm run client`
+
 
 ## Production
-`
+```
 npm run build-server
 npm run build-client
-`
+```
+
+## Generator
+| Command  																	| Description 								|
+| ----------------------------------------- | --------------------------- |
+| `node generate.js api ${name}` 						| Generate Model, Controller 	|
+| `node generate.js model ${name}` 					| Generate Model 							|
+| `node generate.js apiController ${name}` 	| Generate api controller 		|
+| `node generate.js controller ${name}` 		| Generate controller 				|
 
