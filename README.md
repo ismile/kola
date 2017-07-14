@@ -6,7 +6,7 @@ Another Koa boilerplate
 * Built in auth with JWT
 * Logging with winston
 * Route directly from controller using javascript `decorator`
-* Auto generate rest api by extending `api-controller.js class`
+* Auto generate rest api by extending [api-controller.js](https://github.com/ismile/kola/blob/master/server/util/api-controller.js) class
 * Client packaging using webpack
 * etc
 
@@ -16,8 +16,11 @@ Another Koa boilerplate
 `yarn install` or `npm install`
 
 ## Development
-`npm start`
-`npm run client`
+First you need to change config in [./knexfile.js](https://github.com/ismile/kola/blob/master/knexfile.js)
+```
+npm start
+npm run client
+```
 
 
 ## Production
