@@ -23,7 +23,17 @@ export default class Controller {
 
 	initRoute() {
 		this.route = new Router();
+		// separate apiRoute and make custom route execute first
+		let apiRoute = {};
 		for (var key in this._routeList) {
+			var obj = this._routeList[key];
+			if(key == 'find' || key == 'findOne' || key == 'page' || key == 'create' || key == 'update' || key == 'delete') {
+				apiRoute[key] = this._routeList[key];
+			} else {
+				this.route[obj.method](obj.path, this[key].bind(this));
+			}
+		}
+		for (var key in apiRoute) {
 			var obj = this._routeList[key];
 			this.route[obj.method](obj.path, this[key].bind(this));
 		}
