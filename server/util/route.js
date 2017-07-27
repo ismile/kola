@@ -1,5 +1,5 @@
 export default class RouteUtil {
-	static route(method, path) {
+	static route(method, path, ...middleware) {
 		return function (target, key, obj) {
 			if(!target._routeList) target._routeList = {};
 
@@ -8,55 +8,60 @@ export default class RouteUtil {
 
 			target._routeList[key] = {
 				path: path,
-				method: method
+				method: method,
+				middleware
 			}
 		}
 	}
 
-	static get(path) {
+	static get(path, ...middleware) {
 		return function (target, key, obj) {
 			if(!target._routeList) target._routeList = {};
 			if(!path) path = '/';
 
 			target._routeList[key] = {
 				path: path,
-				method: 'get'
+				method: 'get',
+				middleware
 			}
 		}
 	}
 
-	static post(path) {
+	static post(path, ...middleware) {
 		return function (target, key, obj) {
 			if(!target._routeList) target._routeList = {};
 			if(!path) path = '/';
 
 			target._routeList[key] = {
 				path: path,
-				method: 'post'
+				method: 'post',
+				middleware
 			}
 		}
 	}
 
-	static put(path) {
+	static put(path, ...middleware) {
 		return function (target, key, obj) {
 			if(!target._routeList) target._routeList = {};
 			if(!path) path = '/';
 
 			target._routeList[key] = {
 				path: path,
-				method: 'put'
+				method: 'put',
+				middleware
 			}
 		}
 	}
 
-	static del(path) {
+	static del(path,...middleware) {
 		return function (target, key, obj) {
 			if(!target._routeList) target._routeList = {};
 			if(!path) path = '/';
 
 			target._routeList[key] = {
 				path: path,
-				method: 'delete'
+				method: 'delete',
+				middleware
 			}
 		}
 	}

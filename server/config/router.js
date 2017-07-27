@@ -27,7 +27,7 @@ export default class RouterConfig {
 	 * @memberof RouterConfig
 	 */
 	static protect() {
-		this.router.all(/^\/api(?:\/|$)/, jwt.auth);
+		//this.router.all(/^\/api(?:\/|$)/, jwt.auth);
 	}
 }
 

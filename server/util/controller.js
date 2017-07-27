@@ -30,12 +30,14 @@ export default class Controller {
 			if(key == 'find' || key == 'findOne' || key == 'page' || key == 'create' || key == 'update' || key == 'delete') {
 				apiRoute[key] = this._routeList[key];
 			} else {
-				this.route[obj.method](obj.path, this[key].bind(this));
+				let customMiddleware = obj.middleware.map((e)=> e.bind(this))
+				this.route[obj.method](obj.path, ...customMiddleware, this[key].bind(this));
 			}
 		}
 		for (var key in apiRoute) {
 			var obj = this._routeList[key];
-			this.route[obj.method](obj.path, this[key].bind(this));
+			let customMiddleware = obj.middleware.map((e)=> e.bind(this))
+			this.route[obj.method](obj.path, ...customMiddleware, this[key].bind(this));
 		}
 	}
 
