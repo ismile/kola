@@ -2,11 +2,12 @@ export default class RouteUtil {
 	static route(method, path, ...middleware) {
 		return function (target, key, obj) {
 			if(!target._routeList) target._routeList = {};
+			if(!target._routeList[target.constructor.name]) target._routeList[target.constructor.name] = {};
 
 			if(!method) method = 'get';
 			if(!path) path = '/';
 
-			target._routeList[key] = {
+			target._routeList[target.constructor.name][key] = {
 				path: path,
 				method: method,
 				middleware
@@ -17,9 +18,10 @@ export default class RouteUtil {
 	static get(path, ...middleware) {
 		return function (target, key, obj) {
 			if(!target._routeList) target._routeList = {};
+			if(!target._routeList[target.constructor.name]) target._routeList[target.constructor.name] = {};
 			if(!path) path = '/';
 
-			target._routeList[key] = {
+			target._routeList[target.constructor.name][key] = {
 				path: path,
 				method: 'get',
 				middleware
@@ -30,9 +32,10 @@ export default class RouteUtil {
 	static post(path, ...middleware) {
 		return function (target, key, obj) {
 			if(!target._routeList) target._routeList = {};
+			if(!target._routeList[target.constructor.name]) target._routeList[target.constructor.name] = {};
 			if(!path) path = '/';
 
-			target._routeList[key] = {
+			target._routeList[target.constructor.name][key] = {
 				path: path,
 				method: 'post',
 				middleware
@@ -43,9 +46,10 @@ export default class RouteUtil {
 	static put(path, ...middleware) {
 		return function (target, key, obj) {
 			if(!target._routeList) target._routeList = {};
+			if(!target._routeList[target.constructor.name]) target._routeList[target.constructor.name] = {};
 			if(!path) path = '/';
 
-			target._routeList[key] = {
+			target._routeList[target.constructor.name][key] = {
 				path: path,
 				method: 'put',
 				middleware
@@ -56,9 +60,10 @@ export default class RouteUtil {
 	static del(path,...middleware) {
 		return function (target, key, obj) {
 			if(!target._routeList) target._routeList = {};
+			if(!target._routeList[target.constructor.name]) target._routeList[target.constructor.name] = {};
 			if(!path) path = '/';
 
-			target._routeList[key] = {
+			target._routeList[target.constructor.name][key] = {
 				path: path,
 				method: 'delete',
 				middleware

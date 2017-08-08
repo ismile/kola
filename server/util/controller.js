@@ -23,22 +23,21 @@ export default class Controller {
 
 	initRoute() {
 		this.route = new Router();
-		// separate apiRoute and make custom route execute first
-		let apiRoute = {};
-		for (var key in this._routeList) {
-			var obj = this._routeList[key];
-			if(key == 'find' || key == 'findOne' || key == 'page' || key == 'create' || key == 'update' || key == 'delete') {
-				apiRoute[key] = this._routeList[key];
-			} else {
+		// separate apiRoute and custom route
+		for (var key in this._routeList[this.constructor.name]) {
+			var obj = this._routeList[this.constructor.name][key];
+			let customMiddleware = obj.middleware.map((e)=> e.bind(this))
+			this.route[obj.method](obj.path, ...customMiddleware, this[key].bind(this));
+		}
+		if(this._routeList['ApiController']) {
+			for (var key in this._routeList['ApiController']) {
+				var obj = this._routeList['ApiController'][key];
 				let customMiddleware = obj.middleware.map((e)=> e.bind(this))
 				this.route[obj.method](obj.path, ...customMiddleware, this[key].bind(this));
 			}
 		}
-		for (var key in apiRoute) {
-			var obj = this._routeList[key];
-			let customMiddleware = obj.middleware.map((e)=> e.bind(this))
-			this.route[obj.method](obj.path, ...customMiddleware, this[key].bind(this));
-		}
+		// clean it
+		delete this._routeList[this.constructor.name]
 	}
 
 	build(rootRouter) {
