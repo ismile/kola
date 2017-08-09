@@ -12,7 +12,7 @@ function pad(d) {
 }
 
 var migrate = async () => {
-	var tpl = new String(await fs.readFileAsync('./template/migrate.js'));
+	var tpl = new String(await fs.readFileAsync('./template/migrate.tpl'));
 	var res = _.template(tpl)(data);
 
 	var date = new Date();
@@ -22,7 +22,7 @@ var migrate = async () => {
 }
 
 var model = async() => {
-	var tpl = new String(await fs.readFileAsync('./template/model.js'));
+	var tpl = new String(await fs.readFileAsync('./template/model.tpl'));
 	var res = _.template(tpl)(data);
 
 	await fs.writeFileAsync(`./server/model/${data.className}.js`, res);
@@ -31,7 +31,7 @@ var model = async() => {
 
 
 var apiController = async() => {
-	var tpl = new String(await fs.readFileAsync('./template/res.js'));
+	var tpl = new String(await fs.readFileAsync('./template/res.tpl'));
 	var res = _.template(tpl)(data);
 
 	await fs.writeFileAsync(`./server/rest/${data.name}.res.js`, res);
@@ -46,7 +46,7 @@ var apiController = async() => {
 }
 
 var controller = async() => {
-	var tpl = new String(await fs.readFileAsync('./template/controller.js'));
+	var tpl = new String(await fs.readFileAsync('./template/controller.tpl'));
 	var res = _.template(tpl)(data);
 
 	await fs.writeFileAsync(`./server/rest/${data.name}.res.js`, res);
