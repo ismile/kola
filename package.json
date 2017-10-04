@@ -41,7 +41,6 @@
 		"winston": "^2.3.1"
 	},
 	"devDependencies": {
-		"@types/koa": "^2.0.39",
 		"babel-cli": "^6.24.1",
 		"babel-loader": "^7.0.0",
 		"babel-plugin-transform-class-properties": "^6.24.1",

@@ -25,6 +25,7 @@ export default class App {
 		require('./config/socket').default.init(app, server);
 
 		server.listen(3000);
+		winston.info('[APP]', process.env.NODE_ENV.toUpperCase()+' MODE')
 		winston.info('[APP]', 'Now running on localhost:3000');
 	}
 }
