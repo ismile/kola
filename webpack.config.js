@@ -1,6 +1,7 @@
 var path = require('path');
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var webpack = require('webpack');
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: './client/index.js',
@@ -78,6 +79,9 @@ module.exports = {
 		]
 	},
 	plugins: [
-    new ExtractTextPlugin("styles.css")
+		new ExtractTextPlugin("styles.css"),
+		new CopyWebpackPlugin([
+			{ from: 'client/index.html', to: 'index.html' }
+		])
   ]
 }
