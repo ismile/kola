@@ -1,8 +1,8 @@
 import Router from 'koa-router';
 import _ from 'lodash';
 
-import ApiController from '../util/api-controller';
-import route from '../util/route';
+import ApiController from '../base/api-controller';
+import route from '../base/route';
 import User from '../model/User';
 import jwt from '../config/jwt';
 

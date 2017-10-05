@@ -1,7 +1,7 @@
 import Router from 'koa-router';
 import Controller from './controller';
 import {ModelClass} from 'objection';
-import route from '../util/route';
+import route from './route';
 
 export default class ApiController extends Controller {
 
