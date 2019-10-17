@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "outDir": "./prod_client/",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "module": "commonjs",
+    "target": "es5",
+    "lib": [
+      "es2015",
+      "dom"
+    ],
+    "jsx": "react",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "skipLibCheck": true,
+    "strictFunctionTypes": false
+  },
+  "include": [
+    "./dev_client/**/*",
+    "index.tsx"
+  ]
+}
