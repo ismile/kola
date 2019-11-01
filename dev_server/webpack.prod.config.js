@@ -1,9 +1,9 @@
 const webpack           = require('webpack');
 const path              = require('path');
 const NodemonPlugin     = require('nodemon-webpack-plugin');
+const merge             = require('webpack-merge')
 
-module.exports = {
-  extends: path.resolve(__dirname, '../dev_server/webpack.base.config.js'),
+module.exports = merge(require('./webpack.base.config'), {
   name  : "server:prod",
   mode  : "production",
   plugins: [
@@ -11,4 +11,4 @@ module.exports = {
       'process.env.NODE_ENV': JSON.stringify('production')
     })
   ],
-}
+})
